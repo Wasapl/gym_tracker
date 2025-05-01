@@ -2,3 +2,27 @@
 Convert from Notion page to spreadsheet.
 still need to find out a better format for spreadsheet.
 
+## Flow of data
+```mermaid
+flowchart LR
+  Notion --import_to_sql--> sqliteDB
+  F[calculated fields] --crunch.-->sqliteDB
+  sqliteDB --> GS[Google spreadsheet]
+```
+
+
+## News
+
+
+# Bits
+rename markdown files exported from Notion:
+```bash
+for a in *.md; do
+  if [[ ! "$a" =~ ^20 ]]; then
+    d=$(grep -hE "^Date: " "$a" | cut -d" " -f2 | gsed -E "s|([0-9]{2})/([0-9]{2})/([0-9]{4})|\\3-\\1-\\2|")
+    echo mv "$a" "$d-$a"
+    mv "$a" "$d-$a"
+  fi
+done
+```
+
