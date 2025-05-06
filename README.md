@@ -12,6 +12,13 @@ flowchart LR
 
 
 ## News
+### 2025-05-05
+- Updated from Notion to Sqllite.
+- All fields in Sqlite are amended.
+TODO:
+  - add more calculable fields to crunch.py and run it.
+  - Duplicate sheet in spreadsheet and populate it with updated numbers. check difference between two sheets
+
 
 
 # Bits
