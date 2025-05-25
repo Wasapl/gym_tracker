@@ -12,6 +12,11 @@ flowchart LR
 
 
 ## News
+### 2025-05-25
+- Updated from Notion to Sqllite.
+- All fields in Sqlite are amended.
+- crunching all fields
+
 ### 2025-05-05
 - Updated from Notion to Sqllite.
 - All fields in Sqlite are amended.
