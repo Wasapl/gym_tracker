@@ -12,6 +12,11 @@ flowchart LR
 
 
 ## News
+### 2025-05-29
+- updated from Notion to SQLite
+- shuffled fields in `all data` google Sheet to group data together.
+- new view in SQLite to reflect shuffled fields in Google sheet
+
 ### 2025-05-25
 - Updated from Notion to Sqllite.
 - All fields in Sqlite are amended.
