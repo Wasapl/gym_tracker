@@ -12,6 +12,12 @@ flowchart LR
 
 
 ## News
+### 2025-06-09
+- updated from Notion to SQLite
+- fixed import of row machine line
+- `all_data` google Sheet and table view
+- added `Incline dumbbells press` and `Lat raises` columns to `all_data` sheet
+
 ### 2025-05-29
 - updated from Notion to SQLite
 - shuffled fields in `all data` google Sheet to group data together.
