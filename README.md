@@ -12,6 +12,13 @@ flowchart LR
 
 
 ## News
+### 2025-06-23
+- updated from Notion to SQLite
+- I tried to play with Google form as a new way to input data. but it doesn't open in fill-in mode for me, I can only edit it of preview (without being able to fill it). I have to change google account to fill the form. Plus answers doesn't have default values which is crucial for me during the workout.
+- other Idea I have - create a spreadsheet there all exercises are in one column e.g. Date-exercise-value columns. one gym session will logged in several lines, but it'll look more compact. Exercise column can be a dropdown box. it might be automated to fill default for value column too.
+  - this will require an import from sqlite:habit_data table to a newer table, since sqlite is a source of truth.
+  - also it'll require newer import module from notion to sqlite (or spreadsheet).
+
 ### 2025-06-09
 - updated from Notion to SQLite
 - fixed import of row machine line
