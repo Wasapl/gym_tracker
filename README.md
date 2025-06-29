@@ -11,7 +11,23 @@ flowchart LR
 ```
 
 
+## Source of truth
+For now source of truth is `reshaped` sheet ~~sqlite DB~~.
+I have all rows manually edited to fit into one formula.
+
 ## News
+### 2025-06-29
+- converted habit_data to `reshaped` table in sqlite3 db with use of [melt.py](melt.py),
+- Imported `reshaped` data to google sheets. the sheet has a lot of amendments thus reimport is quite hard to repeat.
+- **source of truth** is now in `reshaped` sheet. new data should be added directly to the sheet.
+- created bunch of pivot tables and graphs based on reshaped data. Graphs are identical to old ones, so data and result are the same.
+- adding new line to the list of reshaped automatically recalculates pivot tables and graphs - what we needed.
+- now I need to learn how to add new lines easily from iphone. this task is crucial for migration.
+  - ideal would be a button starting a macros which creates several lines on top of the sheet and prepoulates them with:
+    - current date
+    - several relevant exercises like `row_machine`, `bench_press`, `lat_rises`, `meldoniy`, `conditions`, `fitband_duration`, `fitband_heartrate`, `fitband_kcal`
+    - get recent values for each exercise
+
 ### 2025-06-23
 - updated from Notion to SQLite
 - I tried to play with Google form as a new way to input data. but it doesn't open in fill-in mode for me, I can only edit it of preview (without being able to fill it). I have to change google account to fill the form. Plus answers doesn't have default values which is crucial for me during the workout.
