@@ -18,7 +18,8 @@ I have all rows manually edited to fit into one formula.
 ## News
 ### 2025-08-08
 - New format of files in Notion. Now it contains boolean field мельдоний.
-- 
+- New files from Notion are imported to `reshaped_data` table in SQL with help of [import_to_reshaped.py](./import_to_reshaped.py). Then new rows are manually copied to `reshaped` sheet.
+- [import_to_reshaped.py](./import_to_reshaped.py) was written based on `import_to_sql.py`. It extracts new exercises like `dumbbell row`, `plank`, HIIT exercises like `fly`, and new fields `Мельдоний`, `feeling`.
 
 ### 2025-06-29
 - converted habit_data to `reshaped` table in sqlite3 db with use of [melt.py](melt.py),
