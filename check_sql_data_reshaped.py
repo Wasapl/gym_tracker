@@ -15,6 +15,11 @@ cursor.execute('SELECT COUNT(*) FROM reshaped_data')
 count = cursor.fetchone()[0]
 print(f"Total rows inserted into reshaped_data: {count}")
 
+# get max id from the reshaped_data table
+cursor.execute('SELECT MAX(id) FROM reshaped_data')
+max_id = cursor.fetchone()[0]
+print(f"Max ID in reshaped_data: {max_id}")
+
 # count the number of unique dates in the reshaped_data table
 cursor.execute('SELECT COUNT(DISTINCT date) FROM reshaped_data')
 unique_dates_count = cursor.fetchone()[0]
