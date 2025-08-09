@@ -1,6 +1,7 @@
 *.zip
 *.db
 *.db.backup*
+*.db.*bak
 habittracker*/
 
 # Byte-compiled / optimized / DLL files

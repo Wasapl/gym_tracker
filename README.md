@@ -16,6 +16,10 @@ For now source of truth is `reshaped` sheet ~~sqlite DB~~.
 I have all rows manually edited to fit into one formula.
 
 ## News
+### 2025-08-08
+- New format of files in Notion. Now it contains boolean field мельдоний.
+- 
+
 ### 2025-06-29
 - converted habit_data to `reshaped` table in sqlite3 db with use of [melt.py](melt.py),
 - Imported `reshaped` data to google sheets. the sheet has a lot of amendments thus reimport is quite hard to repeat.
@@ -48,7 +52,7 @@ I have all rows manually edited to fit into one formula.
 
 ### 2025-05-25
 - Updated from Notion to Sqllite.
-- All fields in Sqlite are amended.
+- All fields in Sqlite are amended. 
 - crunching all fields
 
 ### 2025-05-05

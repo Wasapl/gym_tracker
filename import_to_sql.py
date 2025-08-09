@@ -17,32 +17,32 @@ NOISE = ["> something to do:",
         "4. Держу ли я фокус на том, что действительно важно?",
         "5. Если не сейчас то когда ?"]
 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS habit_data (
-    filename TEXT PRIMARY KEY,
-    heading TEXT,
-    date TEXT,
-    bench_press TEXT,
-    bench_press_2 TEXT,
-    bench_press_3 TEXT,
-    pull_down TEXT,
-    seated_row TEXT,
-    triceps TEXT,
-    Bulgarian_Squat TEXT,
-    Leg_extension TEXT,
-    Leg_curl TEXT,
-    Leg_press TEXT,
-    Calf_extension TEXT,
-    fitband_duration TEXT,
-    fitband_kcal TEXT,
-    fitband_heartrate TEXT,
-    full_text TEXT,
-    row_machine TEXT,
-    inc_bells_press TEXT,
-    lat_rises TEXT
-)
-''')
-conn.commit()
+# cursor.execute('''
+# CREATE TABLE IF NOT EXISTS habit_data (
+#     filename TEXT PRIMARY KEY,
+#     heading TEXT,
+#     date TEXT,
+#     bench_press TEXT,
+#     bench_press_2 TEXT,
+#     bench_press_3 TEXT,
+#     pull_down TEXT,
+#     seated_row TEXT,
+#     triceps TEXT,
+#     Bulgarian_Squat TEXT,
+#     Leg_extension TEXT,
+#     Leg_curl TEXT,
+#     Leg_press TEXT,
+#     Calf_extension TEXT,
+#     fitband_duration TEXT,
+#     fitband_kcal TEXT,
+#     fitband_heartrate TEXT,
+#     full_text TEXT,
+#     row_machine TEXT,
+#     inc_bells_press TEXT,
+#     lat_rises TEXT
+# )
+# ''')
+# conn.commit()
 
 # Function to extract required data from a file
 def extract_data_from_file(filepath):
@@ -68,6 +68,9 @@ def extract_data_from_file(filepath):
         fitband_heartrate = None
         inc_bells_press = None
         lat_rises = None
+        dumbbell_row = None
+        plank = None
+        press_curl = None
         full_text = "".join([line for line in lines if line.strip() and line.strip() not in NOISE])
         
         for line in lines:
@@ -115,13 +118,20 @@ def extract_data_from_file(filepath):
                 inc_bells_press = line.lstrip("+").replace("incline dumbbells press ", "").strip()
             elif line.lstrip("+").startswith("lat raises "):
                 lat_rises = line.lstrip("+").replace("lat raises ", "").strip()
+            elif line.lstrip("+").startswith("dumbbell row "):
+                dumbbell_row = line.lstrip("+").replace("dumbbell row ", "").strip()
+            elif line.lstrip("+").startswith("plank "):
+                plank = line.lstrip("+").replace("plank ", "").strip()
+            elif line.lstrip("+").startswith("press and curl "):
+                press_curl = line.lstrip("+").replace("press and curl ", "").strip()
 
         return filename, heading, date, bench_press, bench_press_2, bench_press_3, pull_down, seated_row, \
             triceps, Bulgarian_Squat, Leg_extension, Leg_curl, Leg_press, Calf_extension, fitband_duration, \
-                fitband_kcal, fitband_heartrate, full_text, row_machine, inc_bells_press, lat_rises
+            fitband_kcal, fitband_heartrate, full_text, row_machine, inc_bells_press, lat_rises, \
+            dumbbell_row, plank, press_curl
 
 # Process all files in the current directory
-current_directory = os.path.join(os.getcwd(), "habittracker2025-06-23") #, "Habit Tracker 2024")
+current_directory = os.path.join(os.getcwd(), "habittracker2025-08-08")
 for filename in os.listdir(current_directory):
     if filename.endswith(".md"):  # Process only Markdown files
         filepath = os.path.join(current_directory, filename)
