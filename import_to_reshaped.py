@@ -52,7 +52,7 @@ def extract_data_from_file(filepath, cursor):
             reshaped_rows.extend([(filename, heading, date, 'seated_row', line.replace("+seated row ", "").strip())])
         elif line.startswith("+трицепс "):
             reshaped_rows.extend([(filename, heading, date, 'triceps', line.replace("+трицепс ", "").strip())])
-        elif line.startswith("+bulgarian split squat**"):
+        elif line.startswith("+bulgarian split squat"):
             reshaped_rows.extend([(filename, heading, date, 'Bulgarian_Squat', line.replace("+bulgarian split squat", "").strip())])
         elif line.startswith("+leg extension") and not line == "leg extension - показалось что болгарские более общие чем это.\n":
             reshaped_rows.extend([(filename, heading, date, 'Leg_extension', line.replace("+leg extension", "").strip())])
@@ -80,10 +80,20 @@ def extract_data_from_file(filepath, cursor):
             reshaped_rows.extend([(filename, heading, date, 'plank', line.replace("+plank ", "").strip())])
         elif line.startswith("+press and curl "):
             reshaped_rows.extend([(filename, heading, date, 'press_curl', line.replace("+press and curl ", "").strip())])
-        elif line.startswith("мельдоний"):
+        # Fields
+        elif line.startswith("мельдоний: "):
             reshaped_rows.extend([(filename, heading, date, 'meldoniy', line.replace("мельдоний: ", "").strip())])
-        elif line.startswith("feeling:"):
+        elif line.startswith("feeling: "):
             reshaped_rows.extend([(filename, heading, date, 'feeling', line.replace("feeling: ", "").strip())])
+        # HIIT exercises
+        elif line.startswith("+fly"):
+            reshaped_rows.extend([(filename, heading, date, 'fly', line.replace("+fly ", "").strip())])
+        elif line.startswith("+burpees"):
+            reshaped_rows.extend([(filename, heading, date, 'burpees', line.replace("+burpees ", "").strip())])
+        elif line.startswith("+push ups"):
+            reshaped_rows.extend([(filename, heading, date, 'push ups', line.replace("+push ups ", "").strip())])
+        elif line.startswith("+russian twist"):
+            reshaped_rows.extend([(filename, heading, date, 'russian twist', line.replace("+russian twist ", "").strip())])
 
     cursor.executemany('INSERT INTO reshaped_data (filename, heading, date, exercise, value) VALUES (?, ?, ?, ?, ?)', reshaped_rows)
     return len(reshaped_rows)
@@ -92,10 +102,10 @@ def extract_data_from_file(filepath, cursor):
 current_directory = os.path.join(os.getcwd(), "habittracker2025-08-08")
 for filename in sorted(os.listdir(current_directory)):
     if filename.endswith(".md"):  # Process only Markdown files
-        logging.info(f"Processing file: {filename}")
+        # logging.info(f"Processing file: {filename}")
         filepath = os.path.join(current_directory, filename)
         rows = extract_data_from_file(filepath, cursor)
-        logging.info(f"{rows} has been inserted into the database.")
+        logging.info(f"{rows} has been inserted into the database from {filename}.")
 
 
 # Commit changes and close the database connection
