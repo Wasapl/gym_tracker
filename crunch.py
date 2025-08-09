@@ -1,9 +1,10 @@
+import os
 import sqlite3
 import re
 
 
 # Connect to the SQLite database
-db_name = "habit_tracker.db"
+db_name = os.getenv("GYM_DB", "habit_tracker.db")
 conn = sqlite3.connect(db_name)
 cursor = conn.cursor()
 

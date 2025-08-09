@@ -1,10 +1,11 @@
+import os
 import sqlite3
 from datetime import datetime
 import re
 
 
 # Create SQLite database and table
-db_name = "habit_tracker.db"
+db_name = os.getenv("GYM_DB", "habit_tracker.db")
 conn = sqlite3.connect(db_name)
 cursor = conn.cursor()
 
