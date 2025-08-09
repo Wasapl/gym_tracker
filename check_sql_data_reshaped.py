@@ -31,14 +31,21 @@ max_date, min_date = cursor.fetchone()
 print(f"Max date in reshaped_data: {max_date}")
 print(f"Min date in reshaped_data: {min_date}")
 
-# print all duplicate rows for date+exercise
-cursor.execute('''SELECT date, exercise, COUNT(*) as count
-FROM reshaped_data
-GROUP BY date, exercise
-HAVING count > 1''')
+
+# print all fields for rows that have duplicates for date+exercise
+cursor.execute('''
+SELECT * FROM reshaped_data r
+WHERE EXISTS (
+    SELECT 1 FROM reshaped_data r2
+    WHERE r2.date = r.date AND r2.exercise = r.exercise
+    GROUP BY r2.date, r2.exercise
+    HAVING COUNT(*) > 1
+)
+ORDER BY r.date, r.exercise
+''')
 duplicates = cursor.fetchall()
 if duplicates:
-    print("Duplicate rows found for date+exercise:")
+    print("Duplicate rows found for date+exercise (all fields):")
     for dup in duplicates:
         print(dup)
 
