@@ -1,6 +1,11 @@
 function calculateTonnage(input) {
-  if (!input) return 0;
+  if (!input) {
+    throw new Error('#N/A');
+  }
 
+  if (typeof input !== 'string') {
+    return '';
+  }
   const sets = input.split(",").map(s => s.trim());
   let total = 0;
 
@@ -16,11 +21,17 @@ function calculateTonnage(input) {
     }
   }
 
-  return total === 0 ? "" : total;
+  if (total > 0) {
+    return total;
+  } else { 
+    throw new Error('tonnage is zero');
+  }
 }
 
 function calculateAverageWeightPerRep(input) {
-  if (!input) return 0;
+  if (!input) {
+    throw new Error('#N/A');
+  }
 
   const sets = input.split(",").map(s => s.trim());
   let totalWeight = 0;
@@ -39,11 +50,18 @@ function calculateAverageWeightPerRep(input) {
     }
   }
 
-  return totalReps > 0 ? totalWeight / totalReps : 0;
+  if (totalReps > 0) {
+    return totalWeight / totalReps;
+  } else { 
+    throw new Error('total reps is zero');
+  }
 }
 
+
 function calculateMaxWeightTimesBestSet(input) {
-  if (!input) return 0;
+  if (!input) {
+    throw new Error('#N/A');
+  }
 
   const sets = input.split(",").map(s => s.trim());
   let maxWeight = 0;
@@ -66,6 +84,10 @@ function calculateMaxWeightTimesBestSet(input) {
       }
     }
   }
-
-  return maxWeight * maxRepsAtMaxWeight;
+  if (maxRepsAtMaxWeight > 0) {
+    return maxWeight * maxRepsAtMaxWeight;
+  } else {
+    throw new Error('reps are zero');
+  }
+  
 }

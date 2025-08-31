@@ -99,7 +99,7 @@ def extract_data_from_file(filepath, cursor):
     return len(reshaped_rows)
 
 # Process all files in the current directory
-current_directory = os.path.join(os.getcwd(), "habittracker2025-08-08")
+current_directory = os.path.join(os.getcwd(), "habittracker2025-08-30")
 for filename in sorted(os.listdir(current_directory)):
     if filename.endswith(".md"):  # Process only Markdown files
         # logging.info(f"Processing file: {filename}")

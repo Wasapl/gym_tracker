@@ -2,6 +2,22 @@
 Convert from Notion page to spreadsheet.
 still need to find out a better format for spreadsheet.
 
+# defenition of task
+
+I need a software that will allow me to track my progress with various exercises.
+It needs to have two-fold UI:
+1. Gym mode:
+   1. easy and simple UI to write down amount of reps and weights during the exercises. 
+   2. User journey:
+      1. user decided which exercise he is going to do next. He picks that exercise fro the list of stored exercises or creates new one.
+      2. Upon the select of exercise UI should show latest data about the exercise: latest weights, sets and reps. This way user is reminded about the exercise and he can decide what number he should strive to.
+      3. User executes one set of the exercise and writes down weight and reps he did. those fields can be prepopulated with data from latest data shown before the exercise.
+2. Stats mode: shows different diagrams build on the data gathered in Gym mode.
+   1. User should be able to pick an exercise and the UI should show latest data, graphs with total ton on vertical axis and date on horizontal axis. data points on a graph could be marked by PE if Personal record was achieved at that date
+   2. User could tap on a specific data point to get more details about it - PEs, conditions, Rate of Perceived Exertion, etc
+
+
+
 ## Flow of data
 ```mermaid
 flowchart LR
@@ -12,10 +28,17 @@ flowchart LR
 
 
 ## Source of truth
-For now source of truth is `reshaped` sheet ~~sqlite DB~~.
+For now source of truth is `reshaped` sheet and `reshaped_data` table in SQLite DB.
 I have all rows manually edited to fit into one formula.
 
+
+
+
+
 ## News
+### 2025-08-24
+- updated both and `reshaped_data` tabla and gym stats spreadsheet
+
 ### 2025-08-08
 - New format of files in Notion. Now it contains boolean field мельдоний.
 - New files from Notion are imported to `reshaped_data` table in SQL with help of [import_to_reshaped.py](./import_to_reshaped.py). Then new rows are manually copied to `reshaped` sheet.
